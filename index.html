@@ -4,39 +4,96 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marques Finance — BPO Financeiro</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C96A;
-    --gold-dark: #9A7A30;
-    --dark: #1A1F2E;
-    --dark2: #242938;
-    --dark3: #2E3347;
-    --white: #FFFFFF;
-    --gray-light: #F5F5F0;
-    --text-muted: #9CA3AF;
+    --gold:        #F0A500;
+    --gold-light:  #FFD060;
+    --gold-dark:   #B8860B;
+    --gold-deep:   #8B6508;
+    --black:       #0A0A0A;
+    --black2:      #111111;
+    --black3:      #1A1A1A;
+    --black4:      #222222;
+    --white:       #FFFFFF;
+    --muted:       #888888;
+    --muted2:      #AAAAAA;
   }
+
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Open Sans', sans-serif;
-    background: var(--dark);
+    background: var(--black);
     color: var(--white);
     overflow-x: hidden;
   }
 
-  /* ===== HERO ===== */
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(240,165,0,0.15);
+    padding: 0 40px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted2);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000 !important;
+    padding: 10px 24px !important;
+    border-radius: 3px;
+  }
+
+  /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
-    background: linear-gradient(135deg, #0D1117 0%, #1A1F2E 40%, #242938 100%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(240,165,0,0.12) 0%, transparent 60%),
+                linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 60px 20px;
+    padding: 120px 20px 80px;
     position: relative;
     overflow: hidden;
   }
@@ -44,106 +101,149 @@
   .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 60%);
-    pointer-events: none;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
 
   .hero-logo {
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-    box-shadow: 0 0 40px rgba(201,168,76,0.4);
-    font-size: 50px;
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 36px;
+    filter: drop-shadow(0 0 30px rgba(240,165,0,0.5));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
   }
 
   .hero-badge {
     display: inline-block;
-    border: 1px solid var(--gold);
+    border: 1px solid rgba(240,165,0,0.5);
     color: var(--gold);
-    padding: 6px 20px;
+    padding: 6px 22px;
     border-radius: 50px;
-    font-size: 11px;
+    font-size: 10px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    background: rgba(240,165,0,0.05);
   }
 
   .hero h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 12px;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 14px;
     color: var(--white);
+    letter-spacing: -1px;
   }
 
-  .hero h1 span {
-    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--text-muted);
-    max-width: 600px;
-    line-height: 1.7;
-    margin-bottom: 40px;
+  .hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.8;
+    margin-bottom: 44px;
   }
 
-  .hero-cta {
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
     display: inline-block;
     background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    color: #0D1117;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border-radius: 3px;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(240,165,0,0.4);
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 36px rgba(240,165,0,0.6);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    border: 1px solid rgba(240,165,0,0.4);
+    color: var(--gold);
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 1px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     padding: 16px 40px;
-    border-radius: 4px;
+    border-radius: 3px;
     text-decoration: none;
     transition: all 0.3s;
-    box-shadow: 0 4px 20px rgba(201,168,76,0.35);
   }
 
-  .hero-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(201,168,76,0.5);
+  .btn-secondary:hover {
+    background: rgba(240,165,0,0.08);
+    border-color: var(--gold);
   }
 
-  .hero-divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
-    margin: 50px auto 0;
-    border-radius: 2px;
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 70px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  /* ===== SECTION BASE ===== */
-  section {
-    padding: 90px 20px;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-tag {
+  .hero-stat h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-stat p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 100px 20px; }
+
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  .sec-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -151,641 +251,638 @@
     margin-bottom: 12px;
   }
 
-  .section-title {
+  .sec-title {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 800;
-    margin-bottom: 16px;
+    font-weight: 900;
     color: var(--white);
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
   }
 
-  .section-subtitle {
-    font-size: 1rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    line-height: 1.7;
-    margin-bottom: 60px;
+  .sec-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 56px;
   }
 
-  .gold-line {
-    width: 50px;
+  .gold-bar {
+    width: 48px;
     height: 3px;
     background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
     border-radius: 2px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
-  /* ===== PROPOSITO ===== */
+  /* ─── PROPÓSITO ─── */
   .proposito {
-    background: linear-gradient(135deg, #0D1117, #1A1F2E);
-    text-align: center;
+    background: var(--black2);
   }
 
-  .proposito-box {
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 12px;
-    padding: 60px 40px;
-    background: rgba(201,168,76,0.04);
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
+  .proposito-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
   }
 
-  .proposito-box::before {
-    content: '"';
-    position: absolute;
-    top: -20px;
-    left: 40px;
-    font-size: 80px;
-    color: var(--gold);
-    opacity: 0.3;
-    font-family: Georgia, serif;
-    line-height: 1;
+  .proposito-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .proposito-box h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 20px;
-    line-height: 1.4;
-  }
-
-  .proposito-box p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    line-height: 1.8;
+  .proposito-img img {
+    width: 280px;
+    filter: drop-shadow(0 0 40px rgba(240,165,0,0.35));
   }
 
   .proposito-tags {
     display: flex;
-    justify-content: center;
-    gap: 16px;
+    gap: 10px;
     flex-wrap: wrap;
-    margin-top: 36px;
+    margin-top: 28px;
   }
 
   .tag {
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.3);
+    background: rgba(240,165,0,0.08);
+    border: 1px solid rgba(240,165,0,0.25);
     color: var(--gold);
-    padding: 8px 20px;
+    padding: 7px 18px;
     border-radius: 50px;
-    font-size: 13px;
+    font-size: 12px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
   }
 
-  /* ===== PROBLEMA ===== */
-  .problema {
-    background: var(--dark2);
-  }
+  /* ─── PROBLEMA ─── */
+  .problema { background: var(--black3); }
 
-  .stat-hero {
+  .stat-big {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 56px;
   }
 
-  .stat-number {
+  .stat-big-num {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(4rem, 10vw, 7rem);
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+    font-size: clamp(5rem, 12vw, 8rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 1;
   }
 
-  .stat-desc {
-    font-size: 1.1rem;
-    color: var(--text-muted);
+  .stat-big-desc {
+    font-size: 1rem;
+    color: var(--muted2);
     margin-top: 8px;
   }
 
-  .problemas-grid {
+  .prob-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
   }
 
-  .problema-card {
-    background: var(--dark3);
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 10px;
+  .prob-card {
+    background: var(--black4);
+    border: 1px solid rgba(240,165,0,0.1);
+    border-radius: 8px;
     padding: 32px 24px;
     text-align: center;
     transition: all 0.3s;
   }
 
-  .problema-card:hover {
-    border-color: var(--gold);
+  .prob-card:hover {
+    border-color: rgba(240,165,0,0.5);
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(201,168,76,0.15);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
   }
 
-  .problema-icon {
-    font-size: 36px;
-    margin-bottom: 16px;
-  }
+  .prob-icon { font-size: 36px; margin-bottom: 14px; }
 
-  .problema-card h3 {
+  .prob-card h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 10px;
-  }
-
-  .problema-card p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .solucao-banner {
-    margin-top: 40px;
-    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 10px;
-    padding: 24px 32px;
-    text-align: center;
-    color: var(--gold-light);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-
-  /* ===== SERVICOS ===== */
-  .servicos {
-    background: var(--dark);
-  }
-
-  .servicos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 28px;
-  }
-
-  .servico-card {
-    background: linear-gradient(145deg, var(--dark2), var(--dark3));
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 12px;
-    padding: 36px 28px;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .servico-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
-    transition: width 0.4s;
-  }
-
-  .servico-card:hover::after {
-    width: 100%;
-  }
-
-  .servico-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(201,168,76,0.4);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-  }
-
-  .servico-icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-
-  .servico-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 12px;
-  }
-
-  .servico-card p {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* ===== BENEFICIOS ===== */
-  .beneficios {
-    background: linear-gradient(135deg, #0D1117, #1A1F2E);
-  }
-
-  .beneficios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
-  }
-
-  .beneficio-card {
-    background: rgba(201,168,76,0.05);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 12px;
-    padding: 36px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    transition: all 0.3s;
-  }
-
-  .beneficio-card:hover {
-    background: rgba(201,168,76,0.09);
-    transform: translateY(-3px);
-  }
-
-  .beneficio-icon-wrap {
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-  }
-
-  .beneficio-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--white);
-  }
-
-  .beneficio-card p {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* ===== DIFERENCIAIS ===== */
-  .diferenciais {
-    background: var(--dark2);
-  }
-
-  .diferenciais-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 780px;
-  }
-
-  .diferencial-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    background: var(--dark3);
-    border-left: 3px solid var(--gold);
-    border-radius: 0 10px 10px 0;
-    padding: 24px 28px;
-    transition: all 0.3s;
-  }
-
-  .diferencial-item:hover {
-    background: rgba(201,168,76,0.06);
-  }
-
-  .diferencial-num {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--gold);
-    opacity: 0.5;
-    min-width: 36px;
-    line-height: 1;
-  }
-
-  .diferencial-item h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 6px;
-  }
-
-  .diferencial-item p {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .diferencial-resultado {
-    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
-    border: 1px solid rgba(201,168,76,0.4);
-    border-radius: 10px;
-    padding: 28px 32px;
-    margin-top: 40px;
-    max-width: 780px;
-  }
-
-  .diferencial-resultado span {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--gold);
-  }
-
-  .diferencial-resultado p {
     font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-top: 6px;
-  }
-
-  /* ===== INVESTIMENTO ===== */
-  .investimento {
-    background: var(--dark);
-    text-align: center;
-  }
-
-  .invest-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
-    margin-bottom: 40px;
-  }
-
-  .invest-card {
-    background: var(--dark2);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 12px;
-    padding: 36px 28px;
-    text-align: left;
-  }
-
-  .invest-card-icon {
-    font-size: 32px;
-    margin-bottom: 16px;
-  }
-
-  .invest-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
-
-  .invest-card ul {
-    list-style: none;
-  }
-
-  .invest-card ul li {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .invest-card ul li::before {
-    content: '✓';
-    color: var(--gold);
-    font-weight: 700;
-    font-size: 12px;
-  }
-
-  /* ===== CONTATO ===== */
-  .contato {
-    background: linear-gradient(135deg, #0D1117, #1A1F2E);
-    text-align: center;
-  }
-
-  .contato-cta-box {
-    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.03));
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 16px;
-    padding: 60px 40px;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .contato-cta-box h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 16px;
-  }
-
-  .contato-cta-box p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 36px;
-  }
-
-  .contato-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    color: #0D1117;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 1px;
-    padding: 18px 48px;
-    border-radius: 4px;
-    text-decoration: none;
-    margin: 8px;
-    transition: all 0.3s;
-    box-shadow: 0 4px 20px rgba(201,168,76,0.35);
-  }
-
-  .contato-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(201,168,76,0.5);
-  }
-
-  .contato-info {
-    margin-top: 32px;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-  }
-
-  .contato-info strong {
-    color: var(--gold);
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    background: #0D1117;
-    padding: 36px 20px;
-    text-align: center;
-    border-top: 1px solid rgba(201,168,76,0.15);
-  }
-
-  footer .footer-brand {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
     font-weight: 700;
     color: var(--gold);
     margin-bottom: 8px;
   }
 
-  footer p {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+  .prob-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  .solucao-strip {
+    margin-top: 36px;
+    background: linear-gradient(135deg, rgba(240,165,0,0.1), rgba(240,165,0,0.04));
+    border: 1px solid rgba(240,165,0,0.25);
+    border-radius: 8px;
+    padding: 22px 32px;
+    text-align: center;
+    color: var(--gold-light);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
   }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 600px) {
-    section { padding: 60px 16px; }
-    .proposito-box { padding: 40px 24px; }
-    .servico-card, .beneficio-card { padding: 28px 20px; }
+  /* ─── SERVIÇOS ─── */
+  .servicos { background: var(--black); }
+
+  .serv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .serv-card {
+    background: var(--black2);
+    border: 1px solid rgba(240,165,0,0.1);
+    border-radius: 10px;
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .serv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .serv-card:hover::before { opacity: 1; }
+
+  .serv-card:hover {
+    border-color: rgba(240,165,0,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  }
+
+  .serv-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold-dark));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .serv-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .serv-card p { font-size: 0.855rem; color: var(--muted); line-height: 1.7; }
+
+  /* ─── BENEFÍCIOS ─── */
+  .beneficios { background: var(--black3); }
+
+  .ben-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .ben-card {
+    background: var(--black4);
+    border: 1px solid rgba(240,165,0,0.12);
+    border-radius: 10px;
+    padding: 32px 24px;
+    transition: all 0.3s;
+  }
+
+  .ben-card:hover {
+    background: rgba(240,165,0,0.04);
+    transform: translateY(-3px);
+    border-color: rgba(240,165,0,0.3);
+  }
+
+  .ben-icon-wrap {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .ben-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .ben-card p { font-size: 0.855rem; color: var(--muted); line-height: 1.6; }
+
+  /* ─── DIFERENCIAIS ─── */
+  .diferenciais { background: var(--black2); }
+
+  .dif-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .dif-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .dif-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: var(--black3);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 22px 24px;
+    transition: all 0.3s;
+  }
+
+  .dif-item:hover { background: rgba(240,165,0,0.05); }
+
+  .dif-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.4;
+    min-width: 32px;
+    line-height: 1;
+  }
+
+  .dif-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .dif-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  .dif-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 8px;
+  }
+
+  .dif-stat-card {
+    background: linear-gradient(135deg, rgba(240,165,0,0.1), rgba(240,165,0,0.03));
+    border: 1px solid rgba(240,165,0,0.3);
+    border-radius: 10px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .dif-stat-card .big-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dif-stat-card p { font-size: 0.82rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  /* ─── INVESTIMENTO ─── */
+  .investimento { background: var(--black); }
+
+  .inv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .inv-card {
+    background: var(--black2);
+    border: 1px solid rgba(240,165,0,0.12);
+    border-radius: 10px;
+    padding: 36px 28px;
+  }
+
+  .inv-card-icon { font-size: 30px; margin-bottom: 14px; }
+
+  .inv-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(240,165,0,0.15);
+  }
+
+  .inv-card ul { list-style: none; }
+
+  .inv-card ul li {
+    font-size: 0.855rem;
+    color: var(--muted2);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .inv-card ul li::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  /* ─── CONTATO ─── */
+  .contato {
+    background: radial-gradient(ellipse at 50% 100%, rgba(240,165,0,0.1) 0%, transparent 60%),
+                var(--black3);
+    text-align: center;
+  }
+
+  .contato-box {
+    background: var(--black2);
+    border: 1px solid rgba(240,165,0,0.2);
+    border-radius: 16px;
+    padding: 70px 40px;
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contato-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .contato-box h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+
+  .contato-box p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 36px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contato-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-whats {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #1a6e38, #25a244);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border-radius: 3px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,162,68,0.3);
+    transition: all 0.3s;
+  }
+
+  .btn-whats:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,162,68,0.5); }
+
+  .contato-info {
+    margin-top: 28px;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .contato-info strong { color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #050505;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(240,165,0,0.1);
+  }
+
+  .footer-logo img {
+    height: 50px;
+    filter: drop-shadow(0 0 10px rgba(240,165,0,0.3));
+    margin-bottom: 12px;
+  }
+
+  footer p { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .proposito-inner { grid-template-columns: 1fr; }
+    .proposito-img { display: none; }
+    .dif-inner { grid-template-columns: 1fr; }
+    section { padding: 70px 16px; }
+    .contato-box { padding: 48px 24px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://media.base44.com/images/public/69fb775616f1c2bcc1d284db/a114167d8_LOGOOFC-MARQUESFINANCE.png" alt="Marques Finance">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#beneficios">Benefícios</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
 <section class="hero">
-  <div class="hero-logo">📊</div>
+  <img class="hero-logo"
+       src="https://media.base44.com/images/public/69fb775616f1c2bcc1d284db/a114167d8_LOGOOFC-MARQUESFINANCE.png"
+       alt="Marques Finance Logo">
   <div class="hero-badge">Consultoria Financeira & BPO</div>
-  <h1>Gestão Financeira<br><span>Estratégica e Inteligente</span></h1>
-  <p class="hero-subtitle">
+  <h1>Gestão Financeira<br><em>Estratégica e Inteligente</em></h1>
+  <p class="hero-sub">
     Libertamos sua empresa das tarefas operacionais financeiras para que você foque no crescimento — com agilidade, sigilo absoluto e conformidade rigorosa.
   </p>
-  <a href="#contato" class="hero-cta">SOLICITAR PROPOSTA GRATUITA</a>
-  <div class="hero-divider"></div>
+  <div class="hero-btns">
+    <a href="#contato" class="btn-primary">Solicitar Proposta</a>
+    <a href="#servicos" class="btn-secondary">Nossos Serviços</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <h3>80%</h3>
+      <p>Redução no tempo de processamento</p>
+    </div>
+    <div class="hero-stat">
+      <h3>100%</h3>
+      <p>Digitalização dos processos</p>
+    </div>
+    <div class="hero-stat">
+      <h3>24/7</h3>
+      <p>Automação financeira ativa</p>
+    </div>
+  </div>
 </section>
 
-<!-- ===== PROPÓSITO ===== -->
+<!-- ─── PROPÓSITO ─── -->
 <section class="proposito">
   <div class="container">
-    <div class="proposito-box">
-      <h2>Libertamos sua empresa das tarefas operacionais para focar no crescimento</h2>
-      <p>Nossa missão é assumir toda a gestão financeira operacional do seu negócio, entregando controle, visibilidade e inteligência nos dados — para que você tome as melhores decisões com confiança.</p>
-      <div class="proposito-tags">
-        <span class="tag">⚡ Agilidade</span>
-        <span class="tag">🔒 Sigilo Absoluto</span>
-        <span class="tag">✅ Conformidade Rigorosa</span>
+    <div class="proposito-inner">
+      <div>
+        <div class="sec-tag">Nosso propósito</div>
+        <h2 class="sec-title">Libertamos sua empresa para focar no <em style="font-style:normal;color:var(--gold)">crescimento</em></h2>
+        <div class="gold-bar"></div>
+        <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:12px;">
+          Nossa missão é assumir toda a gestão financeira operacional do seu negócio, entregando controle, visibilidade e inteligência nos dados — para que você tome as melhores decisões com confiança.
+        </p>
+        <div class="proposito-tags">
+          <span class="tag">⚡ Agilidade</span>
+          <span class="tag">🔒 Sigilo Absoluto</span>
+          <span class="tag">✅ Conformidade</span>
+          <span class="tag">📊 Inteligência</span>
+        </div>
+      </div>
+      <div class="proposito-img">
+        <img src="https://media.base44.com/images/public/69fb775616f1c2bcc1d284db/ad17d97cf_LOGOV2.png" alt="Marques Finance">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PROBLEMA ===== -->
+<!-- ─── PROBLEMA ─── -->
 <section class="problema">
   <div class="container">
-    <div class="section-tag">Por que agir agora?</div>
-    <h2 class="section-title">Principais Causas da Mortalidade Empresarial</h2>
-    <div class="gold-line"></div>
-
-    <div class="stat-hero">
-      <div class="stat-number">60%</div>
-      <p class="stat-desc">das empresas fecham nos primeiros anos de operação</p>
+    <div class="sec-tag" style="text-align:center">Por que agir agora?</div>
+    <h2 class="sec-title" style="text-align:center">Principais causas da mortalidade empresarial</h2>
+    <div class="gold-bar" style="margin:0 auto 40px;"></div>
+    <div class="stat-big">
+      <div class="stat-big-num">60%</div>
+      <p class="stat-big-desc">das empresas fecham nos primeiros anos de operação</p>
     </div>
-
-    <div class="problemas-grid">
-      <div class="problema-card">
-        <div class="problema-icon">🧭</div>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-icon">🧭</div>
         <h3>Falta de Planejamento</h3>
         <p>Ausência de estratégia clara e objetivos financeiros bem definidos.</p>
       </div>
-      <div class="problema-card">
-        <div class="problema-icon">📋</div>
+      <div class="prob-card">
+        <div class="prob-icon">📋</div>
         <h3>Controles Inadequados</h3>
         <p>Falta de visibilidade real da situação financeira da empresa.</p>
       </div>
-      <div class="problema-card">
-        <div class="problema-icon">💸</div>
+      <div class="prob-card">
+        <div class="prob-icon">💸</div>
         <h3>Gestão do Fluxo de Caixa</h3>
         <p>Dificuldade em prever e controlar entradas e saídas com precisão.</p>
       </div>
-      <div class="problema-card">
-        <div class="problema-icon">🎯</div>
+      <div class="prob-card">
+        <div class="prob-icon">🎯</div>
         <h3>Decisões sem Dados</h3>
         <p>Escolhas baseadas em intuição, não em informações financeiras precisas.</p>
       </div>
     </div>
-
-    <div class="solucao-banner">
-      ✨ Todos esses problemas têm solução com gestão financeira estratégica adequada — e é exatamente isso que fazemos.
+    <div class="solucao-strip">
+      ✨ Todos esses problemas têm solução com gestão financeira estratégica adequada — e é exatamente isso que a Marques Finance entrega.
     </div>
   </div>
 </section>
 
-<!-- ===== SERVIÇOS ===== -->
+<!-- ─── SERVIÇOS ─── -->
 <section class="servicos" id="servicos">
   <div class="container">
-    <div class="section-tag">O que oferecemos</div>
-    <h2 class="section-title">Nossos Serviços Especializados</h2>
-    <div class="gold-line"></div>
-    <p class="section-subtitle">Portfólio completo de soluções financeiras integradas para máxima eficiência operacional.</p>
-
-    <div class="servicos-grid">
-      <div class="servico-card">
-        <div class="servico-icon">🏦</div>
-        <h3>Gestão de Contas a Pagar</h3>
-        <p>Controle completo de pagamentos com processos paperless, gestão automatizada de vencimentos e redução de até 80% no tempo de processamento.</p>
+    <div class="sec-tag">O que oferecemos</div>
+    <h2 class="sec-title">Nossos Serviços Especializados</h2>
+    <div class="gold-bar"></div>
+    <p class="sec-sub">Portfólio completo de soluções financeiras integradas para máxima eficiência operacional.</p>
+    <div class="serv-grid">
+      <div class="serv-card">
+        <div class="serv-icon">🏦</div>
+        <h3>Contas a Pagar (Paperless)</h3>
+        <p>Eliminação completa do papel, workflow digital integrado, gestão automatizada de vencimentos e redução de até 80% no tempo de processamento.</p>
       </div>
-      <div class="servico-card">
-        <div class="servico-icon">📈</div>
-        <h3>Gestão de Contas a Receber</h3>
+      <div class="serv-card">
+        <div class="serv-icon">📈</div>
+        <h3>Contas a Receber</h3>
         <p>Monitoramento diário de entradas, suporte financeiro aos clientes e saldo bancário atualizado em tempo real.</p>
       </div>
-      <div class="servico-card">
-        <div class="servico-icon">🧾</div>
+      <div class="serv-card">
+        <div class="serv-icon">🧾</div>
         <h3>Faturamento & NF-e</h3>
         <p>Emissão automatizada de notas fiscais e boletos com controle total e integração aos sistemas fiscais.</p>
       </div>
-      <div class="servico-card">
-        <div class="servico-icon">⚖️</div>
+      <div class="serv-card">
+        <div class="serv-icon">⚖️</div>
         <h3>Conciliação Bancária</h3>
         <p>Reconciliação automática e precisa de todas as movimentações financeiras, eliminando divergências.</p>
       </div>
-      <div class="servico-card">
-        <div class="servico-icon">📊</div>
+      <div class="serv-card">
+        <div class="serv-icon">📊</div>
         <h3>Relatórios Gerenciais</h3>
-        <p>DRE e DFC mensais + atualização diária dos resultados parciais para correções de rota durante o mês.</p>
+        <p>DRE e DFC mensais + atualização diária dos resultados parciais para correção de rota durante o mês.</p>
       </div>
-      <div class="servico-card">
-        <div class="servico-icon">🤖</div>
-        <h3>Dashboards & Inteligência</h3>
+      <div class="serv-card">
+        <div class="serv-icon">🤖</div>
+        <h3>Dashboards & IA</h3>
         <p>Painéis visuais intuitivos com indicadores de saúde financeira e insights acionáveis para decisões assertivas.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== BENEFÍCIOS ===== -->
-<section class="beneficios">
+<!-- ─── BENEFÍCIOS ─── -->
+<section class="beneficios" id="beneficios">
   <div class="container">
-    <div class="section-tag">Resultados reais</div>
-    <h2 class="section-title">Benefícios do BPO Financeiro</h2>
-    <div class="gold-line"></div>
-    <p class="section-subtitle">Transforme sua gestão financeira e potencialize seus resultados desde o primeiro mês.</p>
-
-    <div class="beneficios-grid">
-      <div class="beneficio-card">
-        <div class="beneficio-icon-wrap">🎯</div>
+    <div class="sec-tag">Resultados reais</div>
+    <h2 class="sec-title">Benefícios do BPO Financeiro</h2>
+    <div class="gold-bar"></div>
+    <p class="sec-sub">Transforme sua gestão financeira e potencialize seus resultados desde o primeiro mês.</p>
+    <div class="ben-grid">
+      <div class="ben-card">
+        <div class="ben-icon-wrap">🎯</div>
         <h3>Foco no Core Business</h3>
-        <p>Concentre-se no que realmente importa para seu negócio enquanto cuidamos de toda a gestão financeira.</p>
+        <p>Concentre-se no que realmente importa enquanto cuidamos de toda a gestão financeira.</p>
       </div>
-      <div class="beneficio-card">
-        <div class="beneficio-icon-wrap">💰</div>
+      <div class="ben-card">
+        <div class="ben-icon-wrap">💰</div>
         <h3>Redução de Gastos</h3>
-        <p>Otimização de processos e eliminação de custos desnecessários com a expertise da nossa equipe.</p>
+        <p>Otimização de processos e eliminação de custos desnecessários com nossa expertise.</p>
       </div>
-      <div class="beneficio-card">
-        <div class="beneficio-icon-wrap">🛡️</div>
+      <div class="ben-card">
+        <div class="ben-icon-wrap">🛡️</div>
         <h3>Segurança Financeira</h3>
         <p>Controles rigorosos e compliance garantem a proteção total dos seus dados e processos.</p>
       </div>
-      <div class="beneficio-card">
-        <div class="beneficio-icon-wrap">👥</div>
+      <div class="ben-card">
+        <div class="ben-icon-wrap">👥</div>
         <h3>Acesso a Especialistas</h3>
         <p>Equipe qualificada oferece clareza e previsibilidade em todas as suas decisões financeiras.</p>
       </div>
@@ -793,62 +890,71 @@
   </div>
 </section>
 
-<!-- ===== DIFERENCIAIS ===== -->
-<section class="diferenciais">
+<!-- ─── DIFERENCIAIS ─── -->
+<section class="diferenciais" id="diferenciais">
   <div class="container">
-    <div class="section-tag">Nosso diferencial</div>
-    <h2 class="section-title">Por que a Marques Finance?</h2>
-    <div class="gold-line"></div>
-
-    <div class="diferenciais-list">
-      <div class="diferencial-item">
-        <div class="diferencial-num">01</div>
-        <div>
-          <h3>Digitalização Total (Paperless)</h3>
-          <p>Eliminação completa do papel nos processos financeiros com workflow digital integrado e aprovações eletrônicas.</p>
+    <div class="sec-tag">Por que a Marques Finance?</div>
+    <h2 class="sec-title">Nossos Diferenciais</h2>
+    <div class="gold-bar"></div>
+    <div class="dif-inner">
+      <div class="dif-list">
+        <div class="dif-item">
+          <div class="dif-num">01</div>
+          <div>
+            <h3>Digitalização Total (Paperless)</h3>
+            <p>Eliminação completa do papel com workflow digital integrado e aprovações eletrônicas.</p>
+          </div>
+        </div>
+        <div class="dif-item">
+          <div class="dif-num">02</div>
+          <div>
+            <h3>DRE com Atualização Diária</h3>
+            <p>Acompanhe resultados todos os dias úteis — corrija a rota antes que seja tarde.</p>
+          </div>
+        </div>
+        <div class="dif-item">
+          <div class="dif-num">03</div>
+          <div>
+            <h3>Inteligência Artificial Aplicada</h3>
+            <p>Automação de fluxos financeiros com algoritmos avançados — menos erros, mais produtividade.</p>
+          </div>
+        </div>
+        <div class="dif-item">
+          <div class="dif-num">04</div>
+          <div>
+            <h3>Assistente Financeiro Dedicado</h3>
+            <p>Suporte diário via canais oficiais, segunda a sexta, das 8h às 18h.</p>
+          </div>
         </div>
       </div>
-      <div class="diferencial-item">
-        <div class="diferencial-num">02</div>
-        <div>
-          <h3>DRE com Atualização Diária</h3>
-          <p>Acompanhe resultados parciais todos os dias úteis — não apenas no fechamento mensal. Corrija a rota antes que seja tarde.</p>
+      <div class="dif-right">
+        <div class="dif-stat-card">
+          <div class="big-num">80%</div>
+          <p>de redução no tempo de processamento financeiro após implantação do BPO</p>
+        </div>
+        <div class="dif-stat-card">
+          <div class="big-num">0</div>
+          <p>documentos físicos — digitalização total dos processos financeiros</p>
+        </div>
+        <div class="dif-stat-card">
+          <div class="big-num">24/7</div>
+          <p>automação financeira trabalhando para o seu negócio o tempo todo</p>
         </div>
       </div>
-      <div class="diferencial-item">
-        <div class="diferencial-num">03</div>
-        <div>
-          <h3>Inteligência Artificial Aplicada</h3>
-          <p>Automação de fluxos financeiros com algoritmos avançados — redução significativa de erros e aumento exponencial de produtividade.</p>
-        </div>
-      </div>
-      <div class="diferencial-item">
-        <div class="diferencial-num">04</div>
-        <div>
-          <h3>Assistente Financeiro Dedicado</h3>
-          <p>Suporte diário especializado via canais oficiais, de segunda a sexta, das 8h às 18h.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="diferencial-resultado">
-      <span>80%</span>
-      <p>de redução no tempo de processamento financeiro + eliminação total de documentos físicos após implantação.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== INVESTIMENTO ===== -->
-<section class="investimento" id="investimento">
+<!-- ─── INVESTIMENTO ─── -->
+<section class="investimento">
   <div class="container">
-    <div class="section-tag">Investimento</div>
-    <h2 class="section-title">Proposta Comercial Sob Medida</h2>
-    <div class="gold-line" style="margin: 0 auto 20px;"></div>
-    <p class="section-subtitle" style="margin: 0 auto 60px;">Cada empresa tem necessidades únicas. Nossa proposta é desenvolvida especificamente para o seu negócio, considerando porte, complexidade e objetivos.</p>
-
-    <div class="invest-cards">
-      <div class="invest-card">
-        <div class="invest-card-icon">💼</div>
+    <div class="sec-tag" style="text-align:center">Investimento</div>
+    <h2 class="sec-title" style="text-align:center">Proposta Comercial Sob Medida</h2>
+    <div class="gold-bar" style="margin:0 auto 16px;"></div>
+    <p class="sec-sub" style="text-align:center;margin:0 auto 56px;">Cada empresa tem necessidades únicas. Nossa proposta é desenvolvida especificamente para o seu negócio.</p>
+    <div class="inv-grid">
+      <div class="inv-card">
+        <div class="inv-card-icon">💼</div>
         <h3>Investimento Transparente</h3>
         <ul>
           <li>Mensalidade fixa baseada no escopo</li>
@@ -857,18 +963,18 @@
           <li>ROI mensurável desde o 1º mês</li>
         </ul>
       </div>
-      <div class="invest-card">
-        <div class="invest-card-icon">🤝</div>
+      <div class="inv-card">
+        <div class="inv-card-icon">🤝</div>
         <h3>Compromisso com Resultados</h3>
         <ul>
-          <li>Melhores recursos dedicados ao seu negócio</li>
+          <li>Recursos dedicados ao seu negócio</li>
           <li>Metas claras e acompanhamento contínuo</li>
           <li>Relatórios periódicos de performance</li>
           <li>Equipe especializada em BPO financeiro</li>
         </ul>
       </div>
-      <div class="invest-card">
-        <div class="invest-card-icon">📜</div>
+      <div class="inv-card">
+        <div class="inv-card-icon">📜</div>
         <h3>Política de Transparência</h3>
         <ul>
           <li>Contratos claros e objetivos</li>
@@ -881,27 +987,31 @@
   </div>
 </section>
 
-<!-- ===== CONTATO ===== -->
+<!-- ─── CONTATO ─── -->
 <section class="contato" id="contato">
   <div class="container">
-    <div class="contato-cta-box">
+    <div class="contato-box">
       <h2>Vamos Começar Esta Jornada?</h2>
-      <p>Nosso compromisso é com o seu sucesso. Com a Marques Finance, sua empresa não apenas cresce — ela prospera com inteligência, inovação e estratégia.</p>
-      <a href="mailto:contato@marquesfinance.com.br" class="contato-btn">📧 ENVIAR E-MAIL</a>
-      <a href="https://wa.me/55" class="contato-btn" style="background: linear-gradient(135deg, #1a5c35, #22a05a); color: white;">💬 WHATSAPP</a>
+      <p>Com a Marques Finance, sua empresa não apenas cresce — ela prospera com inteligência, inovação e estratégia financeira de verdade.</p>
+      <div class="contato-btns">
+        <a href="mailto:contato@marquesfinance.com.br" class="btn-primary">📧 Enviar E-mail</a>
+        <a href="https://wa.me/55" class="btn-whats">💬 WhatsApp</a>
+      </div>
       <div class="contato-info">
-        <strong>Horário de Atendimento:</strong> Segunda a Sexta | 8h às 18h<br>
+        <strong>Horário:</strong> Segunda a Sexta | 8h às 18h &nbsp;·&nbsp;
         <strong>E-mail:</strong> contato@marquesfinance.com.br
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ─── FOOTER ─── -->
 <footer>
-  <div class="footer-brand">MARQUES FINANCE</div>
+  <div class="footer-logo">
+    <img src="https://media.base44.com/images/public/69fb775616f1c2bcc1d284db/a114167d8_LOGOOFC-MARQUESFINANCE.png" alt="Marques Finance">
+  </div>
   <p>Consultoria Financeira & BPO · marquesfinance.com.br</p>
-  <p style="margin-top: 8px;">© 2025 Marques Finance · Todos os direitos reservados</p>
+  <p style="margin-top:6px;">© 2025 Marques Finance · Todos os direitos reservados</p>
 </footer>
 
 </body>
