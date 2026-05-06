@@ -7,696 +7,183 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
-    --gold:        #F0A500;
-    --gold-light:  #FFD060;
-    --gold-dark:   #B8860B;
-    --gold-deep:   #8B6508;
-    --black:       #0A0A0A;
-    --black2:      #111111;
-    --black3:      #1A1A1A;
-    --black4:      #222222;
-    --white:       #FFFFFF;
-    --muted:       #888888;
-    --muted2:      #AAAAAA;
+    --gold: #F0A500; --gold-light: #FFD060; --gold-dark: #B8860B; --gold-deep: #8B6508;
+    --black: #0A0A0A; --black2: #111111; --black3: #1A1A1A; --black4: #222222;
+    --white: #FFFFFF; --muted: #888888; --muted2: #AAAAAA;
   }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'Open Sans', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
 
-  body {
-    font-family: 'Open Sans', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-  }
-
-  /* ─── NAVBAR ─── */
+  /* NAV */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 999;
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(10px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(240,165,0,0.15);
-    padding: 0 40px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
   }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .nav-logo img {
-    height: 44px;
-    width: auto;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo img { height: 44px; width: auto; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
-    color: var(--muted2);
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: color 0.3s;
+    color: var(--muted2); text-decoration: none;
+    font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s;
   }
-
   .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: #000 !important; padding: 10px 24px !important; border-radius: 3px; }
 
-  .nav-cta {
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    color: #000 !important;
-    padding: 10px 24px !important;
-    border-radius: 3px;
-  }
-
-  /* ─── HERO ─── */
+  /* HERO */
   .hero {
     min-height: 100vh;
-    background: radial-gradient(ellipse at 50% 0%, rgba(240,165,0,0.12) 0%, transparent 60%),
-                linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 20px 80px;
-    position: relative;
-    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 0%, rgba(240,165,0,0.12) 0%, transparent 60%), linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 20px 80px; position: relative; overflow: hidden;
   }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 1px;
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
-
   .hero-logo {
-    width: 160px;
-    height: 160px;
-    object-fit: contain;
-    margin-bottom: 36px;
+    width: 160px; height: 160px; object-fit: contain; margin-bottom: 36px;
     filter: drop-shadow(0 0 30px rgba(240,165,0,0.5));
     animation: float 4s ease-in-out infinite;
   }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-10px); }
-  }
-
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
   .hero-badge {
-    display: inline-block;
-    border: 1px solid rgba(240,165,0,0.5);
-    color: var(--gold);
-    padding: 6px 22px;
-    border-radius: 50px;
-    font-size: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    background: rgba(240,165,0,0.05);
+    display: inline-block; border: 1px solid rgba(240,165,0,0.5); color: var(--gold);
+    padding: 6px 22px; border-radius: 50px; font-size: 10px;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 28px; background: rgba(240,165,0,0.05);
   }
-
   .hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 14px;
-    color: var(--white);
-    letter-spacing: -1px;
+    font-family: 'Montserrat', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1; margin-bottom: 14px; color: var(--white); letter-spacing: -1px;
   }
-
   .hero h1 em {
     font-style: normal;
     background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-
-  .hero-sub {
-    font-size: clamp(0.95rem, 2vw, 1.15rem);
-    color: var(--muted);
-    max-width: 580px;
-    line-height: 1.8;
-    margin-bottom: 44px;
-  }
-
-  .hero-btns {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
+  .hero-sub { font-size: clamp(0.95rem, 2vw, 1.15rem); color: var(--muted); max-width: 580px; line-height: 1.8; margin-bottom: 44px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
   .btn-primary {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    color: #000;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 16px 40px;
-    border-radius: 3px;
-    text-decoration: none;
-    box-shadow: 0 4px 24px rgba(240,165,0,0.4);
-    transition: all 0.3s;
+    display: inline-block; background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px;
+    letter-spacing: 1.5px; text-transform: uppercase; padding: 16px 40px; border-radius: 3px;
+    text-decoration: none; box-shadow: 0 4px 24px rgba(240,165,0,0.4); transition: all 0.3s;
   }
-
-  .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 36px rgba(240,165,0,0.6);
-  }
-
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(240,165,0,0.6); }
   .btn-secondary {
-    display: inline-block;
-    border: 1px solid rgba(240,165,0,0.4);
-    color: var(--gold);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 16px 40px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: all 0.3s;
+    display: inline-block; border: 1px solid rgba(240,165,0,0.4); color: var(--gold);
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 1.5px; text-transform: uppercase; padding: 16px 40px; border-radius: 3px;
+    text-decoration: none; transition: all 0.3s;
   }
-
-  .btn-secondary:hover {
-    background: rgba(240,165,0,0.08);
-    border-color: var(--gold);
-  }
-
+  .btn-secondary:hover { background: rgba(240,165,0,0.08); border-color: var(--gold); }
   .hero-stats {
-    display: flex;
-    gap: 48px;
-    margin-top: 70px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    flex-wrap: wrap;
-    justify-content: center;
+    display: flex; gap: 48px; margin-top: 70px; padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; justify-content: center;
   }
-
   .hero-stat h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    font-weight: 900;
+    font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 900;
     background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
+  .hero-stat p { font-size: 0.8rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.5px; }
 
-  .hero-stat p {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-top: 4px;
-    letter-spacing: 0.5px;
-  }
-
-  /* ─── SECTION BASE ─── */
+  /* SECTIONS */
   section { padding: 100px 20px; }
-
   .container { max-width: 1080px; margin: 0 auto; }
+  .sec-tag { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .sec-title { font-family: 'Montserrat', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; color: var(--white); margin-bottom: 14px; letter-spacing: -0.5px; }
+  .sec-sub { font-size: 0.95rem; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 56px; }
+  .gold-bar { width: 48px; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); border-radius: 2px; margin-bottom: 18px; }
 
-  .sec-tag {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
+  /* PROPÓSITO */
+  .proposito { background: var(--black2); }
+  .proposito-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .proposito-img { display: flex; align-items: center; justify-content: center; }
+  .proposito-img img { width: 280px; filter: drop-shadow(0 0 40px rgba(240,165,0,0.35)); }
+  .proposito-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+  .tag { background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.25); color: var(--gold); padding: 7px 18px; border-radius: 50px; font-size: 12px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
 
-  .sec-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 900;
-    color: var(--white);
-    margin-bottom: 14px;
-    letter-spacing: -0.5px;
-  }
-
-  .sec-sub {
-    font-size: 0.95rem;
-    color: var(--muted);
-    max-width: 560px;
-    line-height: 1.8;
-    margin-bottom: 56px;
-  }
-
-  .gold-bar {
-    width: 48px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
-    border-radius: 2px;
-    margin-bottom: 18px;
-  }
-
-  /* ─── PROPÓSITO ─── */
-  .proposito {
-    background: var(--black2);
-  }
-
-  .proposito-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .proposito-img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .proposito-img img {
-    width: 280px;
-    filter: drop-shadow(0 0 40px rgba(240,165,0,0.35));
-  }
-
-  .proposito-tags {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 28px;
-  }
-
-  .tag {
-    background: rgba(240,165,0,0.08);
-    border: 1px solid rgba(240,165,0,0.25);
-    color: var(--gold);
-    padding: 7px 18px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-  }
-
-  /* ─── PROBLEMA ─── */
+  /* PROBLEMA */
   .problema { background: var(--black3); }
-
-  .stat-big {
-    text-align: center;
-    margin-bottom: 56px;
-  }
-
-  .stat-big-num {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(5rem, 12vw, 8rem);
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-  }
-
-  .stat-big-desc {
-    font-size: 1rem;
-    color: var(--muted2);
-    margin-top: 8px;
-  }
-
-  .prob-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-  }
-
-  .prob-card {
-    background: var(--black4);
-    border: 1px solid rgba(240,165,0,0.1);
-    border-radius: 8px;
-    padding: 32px 24px;
-    text-align: center;
-    transition: all 0.3s;
-  }
-
-  .prob-card:hover {
-    border-color: rgba(240,165,0,0.5);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-  }
-
+  .stat-big { text-align: center; margin-bottom: 56px; }
+  .stat-big-num { font-family: 'Montserrat', sans-serif; font-size: clamp(5rem, 12vw, 8rem); font-weight: 900; background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+  .stat-big-desc { font-size: 1rem; color: var(--muted2); margin-top: 8px; }
+  .prob-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .prob-card { background: var(--black4); border: 1px solid rgba(240,165,0,0.1); border-radius: 8px; padding: 32px 24px; text-align: center; transition: all 0.3s; }
+  .prob-card:hover { border-color: rgba(240,165,0,0.5); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.5); }
   .prob-icon { font-size: 36px; margin-bottom: 14px; }
-
-  .prob-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
-
+  .prob-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
   .prob-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .solucao-strip { margin-top: 36px; background: linear-gradient(135deg, rgba(240,165,0,0.1), rgba(240,165,0,0.04)); border: 1px solid rgba(240,165,0,0.25); border-radius: 8px; padding: 22px 32px; text-align: center; color: var(--gold-light); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; }
 
-  .solucao-strip {
-    margin-top: 36px;
-    background: linear-gradient(135deg, rgba(240,165,0,0.1), rgba(240,165,0,0.04));
-    border: 1px solid rgba(240,165,0,0.25);
-    border-radius: 8px;
-    padding: 22px 32px;
-    text-align: center;
-    color: var(--gold-light);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-
-  /* ─── SERVIÇOS ─── */
+  /* SERVIÇOS */
   .servicos { background: var(--black); }
-
-  .serv-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-  }
-
-  .serv-card {
-    background: var(--black2);
-    border: 1px solid rgba(240,165,0,0.1);
-    border-radius: 10px;
-    padding: 36px 28px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s;
-  }
-
-  .serv-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
+  .serv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .serv-card { background: var(--black2); border: 1px solid rgba(240,165,0,0.1); border-radius: 10px; padding: 36px 28px; position: relative; overflow: hidden; transition: all 0.3s; }
+  .serv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.3s; }
   .serv-card:hover::before { opacity: 1; }
-
-  .serv-card:hover {
-    border-color: rgba(240,165,0,0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
-  }
-
-  .serv-icon {
-    width: 52px; height: 52px;
-    background: linear-gradient(135deg, var(--gold-deep), var(--gold-dark));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
-  .serv-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 10px;
-  }
-
+  .serv-card:hover { border-color: rgba(240,165,0,0.3); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.6); }
+  .serv-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--gold-deep), var(--gold-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+  .serv-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
   .serv-card p { font-size: 0.855rem; color: var(--muted); line-height: 1.7; }
 
-  /* ─── BENEFÍCIOS ─── */
+  /* BENEFÍCIOS */
   .beneficios { background: var(--black3); }
-
-  .ben-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-  }
-
-  .ben-card {
-    background: var(--black4);
-    border: 1px solid rgba(240,165,0,0.12);
-    border-radius: 10px;
-    padding: 32px 24px;
-    transition: all 0.3s;
-  }
-
-  .ben-card:hover {
-    background: rgba(240,165,0,0.04);
-    transform: translateY(-3px);
-    border-color: rgba(240,165,0,0.3);
-  }
-
-  .ben-icon-wrap {
-    width: 52px; height: 52px;
-    background: linear-gradient(135deg, var(--gold-deep), var(--gold));
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    margin-bottom: 16px;
-  }
-
-  .ben-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
-
+  .ben-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .ben-card { background: var(--black4); border: 1px solid rgba(240,165,0,0.12); border-radius: 10px; padding: 32px 24px; transition: all 0.3s; }
+  .ben-card:hover { background: rgba(240,165,0,0.04); transform: translateY(-3px); border-color: rgba(240,165,0,0.3); }
+  .ben-icon-wrap { width: 52px; height: 52px; background: linear-gradient(135deg, var(--gold-deep), var(--gold)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .ben-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
   .ben-card p { font-size: 0.855rem; color: var(--muted); line-height: 1.6; }
 
-  /* ─── DIFERENCIAIS ─── */
+  /* DIFERENCIAIS */
   .diferenciais { background: var(--black2); }
-
-  .dif-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-
+  .dif-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
   .dif-list { display: flex; flex-direction: column; gap: 16px; }
-
-  .dif-item {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-    background: var(--black3);
-    border-left: 3px solid var(--gold);
-    border-radius: 0 8px 8px 0;
-    padding: 22px 24px;
-    transition: all 0.3s;
-  }
-
+  .dif-item { display: flex; gap: 18px; align-items: flex-start; background: var(--black3); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 22px 24px; transition: all 0.3s; }
   .dif-item:hover { background: rgba(240,165,0,0.05); }
-
-  .dif-num {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: var(--gold);
-    opacity: 0.4;
-    min-width: 32px;
-    line-height: 1;
-  }
-
-  .dif-item h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 4px;
-  }
-
+  .dif-num { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--gold); opacity: 0.4; min-width: 32px; line-height: 1; }
+  .dif-item h3 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
   .dif-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
-
-  .dif-right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-top: 8px;
-  }
-
-  .dif-stat-card {
-    background: linear-gradient(135deg, rgba(240,165,0,0.1), rgba(240,165,0,0.03));
-    border: 1px solid rgba(240,165,0,0.3);
-    border-radius: 10px;
-    padding: 28px 24px;
-    text-align: center;
-  }
-
-  .dif-stat-card .big-num {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
+  .dif-right { display: flex; flex-direction: column; gap: 20px; padding-top: 8px; }
+  .dif-stat-card { background: linear-gradient(135deg, rgba(240,165,0,0.1), rgba(240,165,0,0.03)); border: 1px solid rgba(240,165,0,0.3); border-radius: 10px; padding: 28px 24px; text-align: center; }
+  .dif-stat-card .big-num { font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .dif-stat-card p { font-size: 0.82rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
 
-  /* ─── INVESTIMENTO ─── */
+  /* INVESTIMENTO */
   .investimento { background: var(--black); }
-
-  .inv-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-  }
-
-  .inv-card {
-    background: var(--black2);
-    border: 1px solid rgba(240,165,0,0.12);
-    border-radius: 10px;
-    padding: 36px 28px;
-  }
-
+  .inv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .inv-card { background: var(--black2); border: 1px solid rgba(240,165,0,0.12); border-radius: 10px; padding: 36px 28px; }
   .inv-card-icon { font-size: 30px; margin-bottom: 14px; }
-
-  .inv-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(240,165,0,0.15);
-  }
-
+  .inv-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--gold); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(240,165,0,0.15); }
   .inv-card ul { list-style: none; }
+  .inv-card ul li { font-size: 0.855rem; color: var(--muted2); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 10px; }
+  .inv-card ul li::before { content: '✦'; color: var(--gold); font-size: 10px; flex-shrink: 0; }
 
-  .inv-card ul li {
-    font-size: 0.855rem;
-    color: var(--muted2);
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .inv-card ul li::before {
-    content: '✦';
-    color: var(--gold);
-    font-size: 10px;
-    flex-shrink: 0;
-  }
-
-  /* ─── CONTATO ─── */
-  .contato {
-    background: radial-gradient(ellipse at 50% 100%, rgba(240,165,0,0.1) 0%, transparent 60%),
-                var(--black3);
-    text-align: center;
-  }
-
-  .contato-box {
-    background: var(--black2);
-    border: 1px solid rgba(240,165,0,0.2);
-    border-radius: 16px;
-    padding: 70px 40px;
-    max-width: 680px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contato-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light), var(--gold));
-  }
-
-  .contato-box h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 900;
-    color: var(--white);
-    margin-bottom: 14px;
-    letter-spacing: -0.5px;
-  }
-
-  .contato-box p {
-    font-size: 0.95rem;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 36px;
-    max-width: 460px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
+  /* CONTATO */
+  .contato { background: radial-gradient(ellipse at 50% 100%, rgba(240,165,0,0.1) 0%, transparent 60%), var(--black3); text-align: center; }
+  .contato-box { background: var(--black2); border: 1px solid rgba(240,165,0,0.2); border-radius: 16px; padding: 70px 40px; max-width: 720px; margin: 0 auto; position: relative; overflow: hidden; }
+  .contato-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light), var(--gold)); }
+  .contato-box h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; color: var(--white); margin-bottom: 14px; letter-spacing: -0.5px; }
+  .contato-box > p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 36px; max-width: 460px; margin-left: auto; margin-right: auto; }
   .contato-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-  .btn-whats {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, #1a6e38, #25a244);
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 16px 32px;
-    border-radius: 3px;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(37,162,68,0.3);
-    transition: all 0.3s;
-  }
-
+  .btn-whats { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #1a6e38, #25a244); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; padding: 16px 32px; border-radius: 3px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,162,68,0.3); transition: all 0.3s; }
   .btn-whats:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,162,68,0.5); }
-
-  .contato-info {
-    margin-top: 28px;
-    font-size: 0.82rem;
-    color: var(--muted);
-  }
-
+  .contato-info { margin-top: 28px; font-size: 0.82rem; color: var(--muted); line-height: 2; }
   .contato-info strong { color: var(--gold); }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: #050505;
-    padding: 40px 20px;
-    text-align: center;
-    border-top: 1px solid rgba(240,165,0,0.1);
-  }
-
-  .footer-logo img {
-    height: 50px;
-    filter: drop-shadow(0 0 10px rgba(240,165,0,0.3));
-    margin-bottom: 12px;
-  }
-
+  /* FOOTER */
+  footer { background: #050505; padding: 40px 20px; text-align: center; border-top: 1px solid rgba(240,165,0,0.1); }
+  .footer-logo img { height: 50px; filter: drop-shadow(0 0 10px rgba(240,165,0,0.3)); margin-bottom: 12px; }
   footer p { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
 
-  /* ─── RESPONSIVE ─── */
+  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
@@ -710,7 +197,7 @@
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
+<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <img src="https://media.base44.com/images/public/69fb775616f1c2bcc1d284db/a114167d8_LOGOOFC-MARQUESFINANCE.png" alt="Marques Finance">
@@ -723,37 +210,24 @@
   </ul>
 </nav>
 
-<!-- ─── HERO ─── -->
+<!-- HERO -->
 <section class="hero">
-  <img class="hero-logo"
-       src="https://media.base44.com/images/public/69fb775616f1c2bcc1d284db/a114167d8_LOGOOFC-MARQUESFINANCE.png"
-       alt="Marques Finance Logo">
+  <img class="hero-logo" src="https://media.base44.com/images/public/69fb775616f1c2bcc1d284db/a114167d8_LOGOOFC-MARQUESFINANCE.png" alt="Marques Finance Logo">
   <div class="hero-badge">Consultoria Financeira & BPO</div>
   <h1>Gestão Financeira<br><em>Estratégica e Inteligente</em></h1>
-  <p class="hero-sub">
-    Libertamos sua empresa das tarefas operacionais financeiras para que você foque no crescimento — com agilidade, sigilo absoluto e conformidade rigorosa.
-  </p>
+  <p class="hero-sub">Libertamos sua empresa das tarefas operacionais financeiras para que você foque no crescimento — com agilidade, sigilo absoluto e conformidade rigorosa.</p>
   <div class="hero-btns">
     <a href="#contato" class="btn-primary">Solicitar Proposta</a>
     <a href="#servicos" class="btn-secondary">Nossos Serviços</a>
   </div>
   <div class="hero-stats">
-    <div class="hero-stat">
-      <h3>80%</h3>
-      <p>Redução no tempo de processamento</p>
-    </div>
-    <div class="hero-stat">
-      <h3>100%</h3>
-      <p>Digitalização dos processos</p>
-    </div>
-    <div class="hero-stat">
-      <h3>24/7</h3>
-      <p>Automação financeira ativa</p>
-    </div>
+    <div class="hero-stat"><h3>80%</h3><p>Redução no tempo de processamento</p></div>
+    <div class="hero-stat"><h3>100%</h3><p>Digitalização dos processos</p></div>
+    <div class="hero-stat"><h3>24/7</h3><p>Automação financeira ativa</p></div>
   </div>
 </section>
 
-<!-- ─── PROPÓSITO ─── -->
+<!-- PROPÓSITO -->
 <section class="proposito">
   <div class="container">
     <div class="proposito-inner">
@@ -761,9 +235,7 @@
         <div class="sec-tag">Nosso propósito</div>
         <h2 class="sec-title">Libertamos sua empresa para focar no <em style="font-style:normal;color:var(--gold)">crescimento</em></h2>
         <div class="gold-bar"></div>
-        <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:12px;">
-          Nossa missão é assumir toda a gestão financeira operacional do seu negócio, entregando controle, visibilidade e inteligência nos dados — para que você tome as melhores decisões com confiança.
-        </p>
+        <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:12px;">Nossa missão é assumir toda a gestão financeira operacional do seu negócio, entregando controle, visibilidade e inteligência nos dados — para que você tome as melhores decisões com confiança.</p>
         <div class="proposito-tags">
           <span class="tag">⚡ Agilidade</span>
           <span class="tag">🔒 Sigilo Absoluto</span>
@@ -778,7 +250,7 @@
   </div>
 </section>
 
-<!-- ─── PROBLEMA ─── -->
+<!-- PROBLEMA -->
 <section class="problema">
   <div class="container">
     <div class="sec-tag" style="text-align:center">Por que agir agora?</div>
@@ -789,34 +261,16 @@
       <p class="stat-big-desc">das empresas fecham nos primeiros anos de operação</p>
     </div>
     <div class="prob-grid">
-      <div class="prob-card">
-        <div class="prob-icon">🧭</div>
-        <h3>Falta de Planejamento</h3>
-        <p>Ausência de estratégia clara e objetivos financeiros bem definidos.</p>
-      </div>
-      <div class="prob-card">
-        <div class="prob-icon">📋</div>
-        <h3>Controles Inadequados</h3>
-        <p>Falta de visibilidade real da situação financeira da empresa.</p>
-      </div>
-      <div class="prob-card">
-        <div class="prob-icon">💸</div>
-        <h3>Gestão do Fluxo de Caixa</h3>
-        <p>Dificuldade em prever e controlar entradas e saídas com precisão.</p>
-      </div>
-      <div class="prob-card">
-        <div class="prob-icon">🎯</div>
-        <h3>Decisões sem Dados</h3>
-        <p>Escolhas baseadas em intuição, não em informações financeiras precisas.</p>
-      </div>
+      <div class="prob-card"><div class="prob-icon">🧭</div><h3>Falta de Planejamento</h3><p>Ausência de estratégia clara e objetivos financeiros bem definidos.</p></div>
+      <div class="prob-card"><div class="prob-icon">📋</div><h3>Controles Inadequados</h3><p>Falta de visibilidade real da situação financeira da empresa.</p></div>
+      <div class="prob-card"><div class="prob-icon">💸</div><h3>Gestão do Fluxo de Caixa</h3><p>Dificuldade em prever e controlar entradas e saídas com precisão.</p></div>
+      <div class="prob-card"><div class="prob-icon">🎯</div><h3>Decisões sem Dados</h3><p>Escolhas baseadas em intuição, não em informações financeiras precisas.</p></div>
     </div>
-    <div class="solucao-strip">
-      ✨ Todos esses problemas têm solução com gestão financeira estratégica adequada — e é exatamente isso que a Marques Finance entrega.
-    </div>
+    <div class="solucao-strip">✨ Todos esses problemas têm solução com gestão financeira estratégica adequada — e é exatamente isso que a Marques Finance entrega.</div>
   </div>
 </section>
 
-<!-- ─── SERVIÇOS ─── -->
+<!-- SERVIÇOS -->
 <section class="servicos" id="servicos">
   <div class="container">
     <div class="sec-tag">O que oferecemos</div>
@@ -824,41 +278,17 @@
     <div class="gold-bar"></div>
     <p class="sec-sub">Portfólio completo de soluções financeiras integradas para máxima eficiência operacional.</p>
     <div class="serv-grid">
-      <div class="serv-card">
-        <div class="serv-icon">🏦</div>
-        <h3>Contas a Pagar (Paperless)</h3>
-        <p>Eliminação completa do papel, workflow digital integrado, gestão automatizada de vencimentos e redução de até 80% no tempo de processamento.</p>
-      </div>
-      <div class="serv-card">
-        <div class="serv-icon">📈</div>
-        <h3>Contas a Receber</h3>
-        <p>Monitoramento diário de entradas, suporte financeiro aos clientes e saldo bancário atualizado em tempo real.</p>
-      </div>
-      <div class="serv-card">
-        <div class="serv-icon">🧾</div>
-        <h3>Faturamento & NF-e</h3>
-        <p>Emissão automatizada de notas fiscais e boletos com controle total e integração aos sistemas fiscais.</p>
-      </div>
-      <div class="serv-card">
-        <div class="serv-icon">⚖️</div>
-        <h3>Conciliação Bancária</h3>
-        <p>Reconciliação automática e precisa de todas as movimentações financeiras, eliminando divergências.</p>
-      </div>
-      <div class="serv-card">
-        <div class="serv-icon">📊</div>
-        <h3>Relatórios Gerenciais</h3>
-        <p>DRE e DFC mensais + atualização diária dos resultados parciais para correção de rota durante o mês.</p>
-      </div>
-      <div class="serv-card">
-        <div class="serv-icon">🤖</div>
-        <h3>Dashboards & IA</h3>
-        <p>Painéis visuais intuitivos com indicadores de saúde financeira e insights acionáveis para decisões assertivas.</p>
-      </div>
+      <div class="serv-card"><div class="serv-icon">🏦</div><h3>Contas a Pagar (Paperless)</h3><p>Eliminação completa do papel, workflow digital integrado, gestão automatizada de vencimentos e redução de até 80% no tempo de processamento.</p></div>
+      <div class="serv-card"><div class="serv-icon">📈</div><h3>Contas a Receber</h3><p>Monitoramento diário de entradas, suporte financeiro aos clientes e saldo bancário atualizado em tempo real.</p></div>
+      <div class="serv-card"><div class="serv-icon">🧾</div><h3>Faturamento & NF-e</h3><p>Emissão automatizada de notas fiscais e boletos com controle total e integração aos sistemas fiscais.</p></div>
+      <div class="serv-card"><div class="serv-icon">⚖️</div><h3>Conciliação Bancária</h3><p>Reconciliação automática e precisa de todas as movimentações financeiras, eliminando divergências.</p></div>
+      <div class="serv-card"><div class="serv-icon">📊</div><h3>Relatórios Gerenciais</h3><p>DRE e DFC mensais + atualização diária dos resultados parciais para correção de rota durante o mês.</p></div>
+      <div class="serv-card"><div class="serv-icon">🤖</div><h3>Dashboards & IA</h3><p>Painéis visuais intuitivos com indicadores de saúde financeira e insights acionáveis para decisões assertivas.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ─── BENEFÍCIOS ─── -->
+<!-- BENEFÍCIOS -->
 <section class="beneficios" id="beneficios">
   <div class="container">
     <div class="sec-tag">Resultados reais</div>
@@ -866,31 +296,15 @@
     <div class="gold-bar"></div>
     <p class="sec-sub">Transforme sua gestão financeira e potencialize seus resultados desde o primeiro mês.</p>
     <div class="ben-grid">
-      <div class="ben-card">
-        <div class="ben-icon-wrap">🎯</div>
-        <h3>Foco no Core Business</h3>
-        <p>Concentre-se no que realmente importa enquanto cuidamos de toda a gestão financeira.</p>
-      </div>
-      <div class="ben-card">
-        <div class="ben-icon-wrap">💰</div>
-        <h3>Redução de Gastos</h3>
-        <p>Otimização de processos e eliminação de custos desnecessários com nossa expertise.</p>
-      </div>
-      <div class="ben-card">
-        <div class="ben-icon-wrap">🛡️</div>
-        <h3>Segurança Financeira</h3>
-        <p>Controles rigorosos e compliance garantem a proteção total dos seus dados e processos.</p>
-      </div>
-      <div class="ben-card">
-        <div class="ben-icon-wrap">👥</div>
-        <h3>Acesso a Especialistas</h3>
-        <p>Equipe qualificada oferece clareza e previsibilidade em todas as suas decisões financeiras.</p>
-      </div>
+      <div class="ben-card"><div class="ben-icon-wrap">🎯</div><h3>Foco no Core Business</h3><p>Concentre-se no que realmente importa enquanto cuidamos de toda a gestão financeira.</p></div>
+      <div class="ben-card"><div class="ben-icon-wrap">💰</div><h3>Redução de Gastos</h3><p>Otimização de processos e eliminação de custos desnecessários com nossa expertise.</p></div>
+      <div class="ben-card"><div class="ben-icon-wrap">🛡️</div><h3>Segurança Financeira</h3><p>Controles rigorosos e compliance garantem a proteção total dos seus dados e processos.</p></div>
+      <div class="ben-card"><div class="ben-icon-wrap">👥</div><h3>Acesso a Especialistas</h3><p>Equipe qualificada oferece clareza e previsibilidade em todas as suas decisões financeiras.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ─── DIFERENCIAIS ─── -->
+<!-- DIFERENCIAIS -->
 <section class="diferenciais" id="diferenciais">
   <div class="container">
     <div class="sec-tag">Por que a Marques Finance?</div>
@@ -898,54 +312,21 @@
     <div class="gold-bar"></div>
     <div class="dif-inner">
       <div class="dif-list">
-        <div class="dif-item">
-          <div class="dif-num">01</div>
-          <div>
-            <h3>Digitalização Total (Paperless)</h3>
-            <p>Eliminação completa do papel com workflow digital integrado e aprovações eletrônicas.</p>
-          </div>
-        </div>
-        <div class="dif-item">
-          <div class="dif-num">02</div>
-          <div>
-            <h3>DRE com Atualização Diária</h3>
-            <p>Acompanhe resultados todos os dias úteis — corrija a rota antes que seja tarde.</p>
-          </div>
-        </div>
-        <div class="dif-item">
-          <div class="dif-num">03</div>
-          <div>
-            <h3>Inteligência Artificial Aplicada</h3>
-            <p>Automação de fluxos financeiros com algoritmos avançados — menos erros, mais produtividade.</p>
-          </div>
-        </div>
-        <div class="dif-item">
-          <div class="dif-num">04</div>
-          <div>
-            <h3>Assistente Financeiro Dedicado</h3>
-            <p>Suporte diário via canais oficiais, segunda a sexta, das 8h às 18h.</p>
-          </div>
-        </div>
+        <div class="dif-item"><div class="dif-num">01</div><div><h3>Digitalização Total (Paperless)</h3><p>Eliminação completa do papel com workflow digital integrado e aprovações eletrônicas.</p></div></div>
+        <div class="dif-item"><div class="dif-num">02</div><div><h3>DRE com Atualização Diária</h3><p>Acompanhe resultados todos os dias úteis — corrija a rota antes que seja tarde.</p></div></div>
+        <div class="dif-item"><div class="dif-num">03</div><div><h3>Inteligência Artificial Aplicada</h3><p>Automação de fluxos financeiros com algoritmos avançados — menos erros, mais produtividade.</p></div></div>
+        <div class="dif-item"><div class="dif-num">04</div><div><h3>Assistente Financeiro Dedicado</h3><p>Suporte diário via canais oficiais, segunda a sexta, das 8h às 18h.</p></div></div>
       </div>
       <div class="dif-right">
-        <div class="dif-stat-card">
-          <div class="big-num">80%</div>
-          <p>de redução no tempo de processamento financeiro após implantação do BPO</p>
-        </div>
-        <div class="dif-stat-card">
-          <div class="big-num">0</div>
-          <p>documentos físicos — digitalização total dos processos financeiros</p>
-        </div>
-        <div class="dif-stat-card">
-          <div class="big-num">24/7</div>
-          <p>automação financeira trabalhando para o seu negócio o tempo todo</p>
-        </div>
+        <div class="dif-stat-card"><div class="big-num">80%</div><p>de redução no tempo de processamento financeiro após implantação do BPO</p></div>
+        <div class="dif-stat-card"><div class="big-num">0</div><p>documentos físicos — digitalização total dos processos financeiros</p></div>
+        <div class="dif-stat-card"><div class="big-num">24/7</div><p>automação financeira trabalhando para o seu negócio o tempo todo</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── INVESTIMENTO ─── -->
+<!-- INVESTIMENTO -->
 <section class="investimento">
   <div class="container">
     <div class="sec-tag" style="text-align:center">Investimento</div>
@@ -953,59 +334,33 @@
     <div class="gold-bar" style="margin:0 auto 16px;"></div>
     <p class="sec-sub" style="text-align:center;margin:0 auto 56px;">Cada empresa tem necessidades únicas. Nossa proposta é desenvolvida especificamente para o seu negócio.</p>
     <div class="inv-grid">
-      <div class="inv-card">
-        <div class="inv-card-icon">💼</div>
-        <h3>Investimento Transparente</h3>
-        <ul>
-          <li>Mensalidade fixa baseada no escopo</li>
-          <li>Taxa única de setup e implantação</li>
-          <li>Sem custos ocultos ou surpresas</li>
-          <li>ROI mensurável desde o 1º mês</li>
-        </ul>
-      </div>
-      <div class="inv-card">
-        <div class="inv-card-icon">🤝</div>
-        <h3>Compromisso com Resultados</h3>
-        <ul>
-          <li>Recursos dedicados ao seu negócio</li>
-          <li>Metas claras e acompanhamento contínuo</li>
-          <li>Relatórios periódicos de performance</li>
-          <li>Equipe especializada em BPO financeiro</li>
-        </ul>
-      </div>
-      <div class="inv-card">
-        <div class="inv-card-icon">📜</div>
-        <h3>Política de Transparência</h3>
-        <ul>
-          <li>Contratos claros e objetivos</li>
-          <li>Rescisão sem multas abusivas</li>
-          <li>Sigilo garantido por contrato</li>
-          <li>Seu sucesso é nossa prioridade</li>
-        </ul>
-      </div>
+      <div class="inv-card"><div class="inv-card-icon">💼</div><h3>Investimento Transparente</h3><ul><li>Mensalidade fixa baseada no escopo</li><li>Taxa única de setup e implantação</li><li>Sem custos ocultos ou surpresas</li><li>ROI mensurável desde o 1º mês</li></ul></div>
+      <div class="inv-card"><div class="inv-card-icon">🤝</div><h3>Compromisso com Resultados</h3><ul><li>Recursos dedicados ao seu negócio</li><li>Metas claras e acompanhamento contínuo</li><li>Relatórios periódicos de performance</li><li>Equipe especializada em BPO financeiro</li></ul></div>
+      <div class="inv-card"><div class="inv-card-icon">📜</div><h3>Política de Transparência</h3><ul><li>Contratos claros e objetivos</li><li>Rescisão sem multas abusivas</li><li>Sigilo garantido por contrato</li><li>Seu sucesso é nossa prioridade</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- ─── CONTATO ─── -->
+<!-- CONTATO -->
 <section class="contato" id="contato">
   <div class="container">
     <div class="contato-box">
       <h2>Vamos Começar Esta Jornada?</h2>
       <p>Com a Marques Finance, sua empresa não apenas cresce — ela prospera com inteligência, inovação e estratégia financeira de verdade.</p>
       <div class="contato-btns">
-        <a href="mailto:contato@marquesfinance.com.br" class="btn-primary">📧 Enviar E-mail</a>
-        <a href="https://wa.me/55" class="btn-whats">💬 WhatsApp</a>
+        <a href="mailto:comercial@marquesfinance.com.br" class="btn-primary">📧 E-mail Comercial</a>
+        <a href="https://wa.me/5511970117936" class="btn-whats">💬 WhatsApp</a>
       </div>
       <div class="contato-info">
-        <strong>Horário:</strong> Segunda a Sexta | 8h às 18h &nbsp;·&nbsp;
-        <strong>E-mail:</strong> contato@marquesfinance.com.br
+        <strong>Horário:</strong> Segunda a Sexta | 8h às 18h<br>
+        <strong>Comercial:</strong> comercial@marquesfinance.com.br &nbsp;·&nbsp;
+        <strong>Contato:</strong> contato@marquesfinance.com.br
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">
     <img src="https://media.base44.com/images/public/69fb775616f1c2bcc1d284db/a114167d8_LOGOOFC-MARQUESFINANCE.png" alt="Marques Finance">
