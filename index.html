@@ -422,23 +422,69 @@
           <li>Sem multa abusiva de rescisão</li>
         </ul>
       </div>
-      <form class="lead-form">
-        <div><label>Nome</label><input type="text" placeholder="Seu nome completo"></div>
-        <div><label>Empresa</label><input type="text" placeholder="Nome da empresa"></div>
-        <div><label>E-mail</label><input type="email" placeholder="voce@empresa.com.br"></div>
-        <div><label>WhatsApp</label><input type="tel" placeholder="(11) 90000-0000"></div>
+      <form class="lead-form" id="leadForm">
+        <input type="hidden" name="access_key" value="6c10763e-c212-4a34-b3c2-1a406022e6c6">
+        <input type="hidden" name="subject" value="Novo lead — site Marques Finance">
+        <input type="hidden" name="from_name" value="Site Marques Finance">
+        <input type="checkbox" name="botcheck" id="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div><label>Nome</label><input type="text" name="name" placeholder="Seu nome completo" required></div>
+        <div><label>Empresa</label><input type="text" name="empresa" placeholder="Nome da empresa" required></div>
+        <div><label>E-mail</label><input type="email" name="email" placeholder="voce@empresa.com.br" required></div>
+        <div><label>WhatsApp</label><input type="tel" name="whatsapp" placeholder="(11) 90000-0000" required></div>
         <div>
           <label>Principal dor hoje</label>
-          <select>
+          <select name="dor">
             <option>Controle de caixa</option>
             <option>DRE e relatórios gerenciais</option>
             <option>Recuperação judicial</option>
             <option>Outro</option>
           </select>
         </div>
-        <button type="submit">Solicitar proposta</button>
-        <div class="form-note">Protótipo visual — envio ainda não está conectado.</div>
+        <button type="submit" id="leadFormBtn">Solicitar proposta</button>
+        <div class="form-note" id="leadFormMsg">Seus dados vão direto para nossa equipe comercial.</div>
       </form>
+      <script>
+        (function(){
+          var form = document.getElementById('leadForm');
+          var btn = document.getElementById('leadFormBtn');
+          var msg = document.getElementById('leadFormMsg');
+          form.addEventListener('submit', function(e){
+            e.preventDefault();
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+            msg.style.color = 'rgba(250,248,244,0.4)';
+            msg.textContent = 'Enviando...';
+
+            var formData = new FormData(form);
+            var payload = {};
+            formData.forEach(function(value, key){ payload[key] = value; });
+            payload.access_key = "6c10763e-c212-4a34-b3c2-1a406022e6c6";
+
+            fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify(payload)
+            })
+            .then(function(res){ return res.json(); })
+            .then(function(data){
+              if (data.success) {
+                form.reset();
+                btn.textContent = 'Enviado ✓';
+                msg.style.color = 'var(--gold-light)';
+                msg.textContent = 'Recebemos seus dados. Em até um dia útil nossa equipe retorna.';
+              } else {
+                throw new Error(data.message || 'Falha no envio');
+              }
+            })
+            .catch(function(){
+              btn.disabled = false;
+              btn.textContent = 'Solicitar proposta';
+              msg.style.color = '#E39B9B';
+              msg.textContent = 'Não conseguimos enviar agora. Fale direto pelo WhatsApp (11) 91759-4169.';
+            });
+          });
+        })();
+      </script>
     </div>
   </div>
 </section>
