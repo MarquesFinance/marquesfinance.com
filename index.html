@@ -481,6 +481,11 @@
                 btn.textContent = 'Enviado ✓';
                 msg.style.color = 'var(--gold-light)';
                 msg.textContent = 'Recebemos seus dados. Em até um dia útil nossa equipe retorna.';
+                if (typeof gtag === 'function') {
+                  gtag('event', 'conversion', {
+                    'send_to': 'AW-18451102479/VhuFCKCP0vccEI_2ld5E'
+                  });
+                }
               } else {
                 throw new Error(data.message || 'Falha no envio');
               }
