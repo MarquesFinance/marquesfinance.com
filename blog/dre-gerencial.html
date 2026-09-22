@@ -259,6 +259,33 @@
   @media (max-width: 700px){ .article-hero h1{ font-size: 26px; } }
 </style>
 
+
+<style>
+  .magnet{ background: var(--navy); border-radius: 4px; padding: 40px 36px; }
+  .magnet h3{ font-family: Cambria, serif; font-size: 22px; color: var(--cream); font-weight: 400; margin-bottom: 10px; }
+  .magnet p{ color: rgba(250,248,244,0.75); font-size: 15px; margin-bottom: 24px; }
+  .magnet ul{ list-style:none; margin-bottom: 26px; }
+  .magnet li{ font-size: 14px; color: rgba(250,248,244,0.78); padding: 8px 0; border-top: 1px solid rgba(250,248,244,0.12); display:flex; gap:10px; }
+  .magnet li:first-child{ border-top:none; }
+  .magnet li::before{ content:'—'; color: var(--gold); }
+  .magnet-form{ display:grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items:end; }
+  .magnet-form .field{ display:flex; flex-direction:column; }
+  .magnet-form label{ font-size: 12px; color: rgba(250,248,244,0.55); margin-bottom: 6px; }
+  .magnet-form input{
+    background: rgba(250,248,244,0.06); border: 1px solid rgba(250,248,244,0.2);
+    color: var(--cream); padding: 12px 14px; border-radius: 3px; font-size: 14px; font-family: inherit;
+  }
+  .magnet-form input::placeholder{ color: rgba(250,248,244,0.35); }
+  .magnet-form button{
+    background: var(--gold); color: var(--navy-deep); border:none; padding: 13px 22px;
+    font-weight:700; font-size: 14.5px; border-radius: 3px; cursor:pointer; white-space:nowrap;
+  }
+  .magnet-form button:hover{ background: var(--gold-light); }
+  .magnet-note{ font-size: 11.5px; color: rgba(250,248,244,0.4); margin-top: 10px; }
+  .magnet-download{ display:none; }
+  .magnet-download .btn{ margin-top: 4px; }
+  @media (max-width: 640px){ .magnet-form{ grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
 
@@ -329,6 +356,75 @@
     <h2>Onde a maioria erra ao montar isso no Excel</h2>
     <p>Não é falta de esforço — é a natureza da ferramenta. Planilha manual mistura classificação contábil com gerencial, depende de uma pessoa lembrar de atualizar todo mês, e não avisa quando algo está fora do padrão. O resultado: o gestor só descobre o problema quando já é tarde para agir dentro do mês.</p>
 
+    
+    <div class="magnet" id="magnet-article">
+      <h3>Baixe grátis o modelo de DRE Gerencial em Excel</h3>
+      <p>Planilha pronta para usar, com fórmulas automáticas, análise vertical e um exemplo preenchido — com a identidade da Marques Finance.</p>
+      <ul>
+        <li>13 linhas gerenciais, prontas para os 12 meses do ano</li>
+        <li>Subtotais calculados automaticamente (Receita Líquida, Lucro Bruto, EBITDA, Resultado Líquido)</li>
+        <li>Sem custo, sem compromisso</li>
+      </ul>
+      <form class="magnet-form" id="magnetForm-article">
+        <div class="field">
+          <label>Nome</label>
+          <input type="text" name="name" placeholder="Seu nome" required>
+        </div>
+        <div class="field">
+          <label>E-mail</label>
+          <input type="email" name="email" placeholder="voce@empresa.com.br" required>
+        </div>
+        <button type="submit" id="magnetBtn-article">Quero o modelo</button>
+      </form>
+      <div class="magnet-note" id="magnetMsg-article">Seus dados vão direto para nossa equipe comercial.</div>
+      <div class="magnet-download" id="magnetDownload-article">
+        <a href="../materiais/modelo-dre-gerencial.xlsx" download class="btn btn-solid" id="magnetLink-article">Baixar modelo agora (.xlsx)</a>
+      </div>
+    </div>
+    <script>
+      (function(){
+        var form = document.getElementById('magnetForm-article');
+        var btn = document.getElementById('magnetBtn-article');
+        var msg = document.getElementById('magnetMsg-article');
+        var dl = document.getElementById('magnetDownload-article');
+        var dlLink = document.getElementById('magnetLink-article');
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          btn.disabled = true;
+          btn.textContent = 'Enviando...';
+          var formData = new FormData(form);
+          var payload = {};
+          formData.forEach(function(value, key){ payload[key] = value; });
+          payload.access_key = "6c10763e-c212-4a34-b3c2-1a406022e6c6";
+          payload.subject = "Novo download (via artigo) — Modelo DRE Gerencial";
+          payload.from_name = "Site Marques Finance — Modelo DRE";
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(payload)
+          })
+          .then(function(res){ return res.json(); })
+          .then(function(data){
+            if (data.success) {
+              form.style.display = 'none';
+              msg.style.color = 'var(--gold-light)';
+              msg.textContent = 'Pronto! Seu download começou. Também te avisamos por e-mail.';
+              dl.style.display = 'block';
+              setTimeout(function(){ dlLink.click(); }, 300);
+            } else {
+              throw new Error(data.message || 'Falha no envio');
+            }
+          })
+          .catch(function(){
+            btn.disabled = false;
+            btn.textContent = 'Quero o modelo';
+            msg.style.color = '#E39B9B';
+            msg.textContent = 'Não conseguimos enviar agora. Tente de novo em instantes.';
+          });
+        });
+      })();
+    </script>
+
     <h2>Como a Marques Finance resolve isso na prática</h2>
     <p>Não pedimos para você trocar de sistema. Usamos os dados que a sua empresa já exporta hoje — do ERP, de planilhas de controle que você já mantém — ou construímos o controle do zero se ainda não existir nada estruturado. A partir daí, entregamos:</p>
     <ul>
@@ -336,6 +432,64 @@
       <li>Atualização diária, não só no fechamento do mês — dá para corrigir rota antes de virar prejuízo</li>
       <li>Nada de planilha manual: o processo é automatizado, sem depender de uma pessoa lembrar de atualizar</li>
     </ul>
+
+<style>
+  .mfhub-mock{ background: var(--navy); border-radius: 6px; padding: 4px; margin: 28px 0 36px; }
+  .mfhub-mock-head{ display:flex; align-items:center; justify-content:space-between; padding: 16px 18px 12px; flex-wrap: wrap; gap: 10px; }
+  .mfhub-mock-brand{ display:flex; align-items:center; gap: 10px; color: var(--cream); font-family: Cambria, serif; font-size: 14px; }
+  .mfhub-mock-brand .dot{ width:8px; height:8px; border-radius:50%; background:var(--gold); }
+  .mfhub-mock-badge{ background: var(--gold); color: var(--navy-deep); font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 20px; }
+  .mfhub-mock-tabs{ display:flex; gap: 8px; padding: 0 18px 16px; flex-wrap: wrap; }
+  .mfhub-mock-tabs span{ background: rgba(227,162,59,0.15); border: 1px solid rgba(227,162,59,0.4); color: var(--gold-light); font-size: 12px; padding: 5px 12px; border-radius: 4px; }
+  .mfhub-mock-scroll{ overflow-x: auto; background: #fff; border-radius: 4px; }
+  table.mfhub-table{ border-collapse: collapse; width: 100%; min-width: 620px; font-size: 12px; }
+  table.mfhub-table th{ background: #F4F4F3; color: var(--ink-soft); font-weight: 700; text-align:right; padding: 9px 12px; border-bottom: 2px solid var(--rule-dark); white-space: nowrap; }
+  table.mfhub-table th:first-child{ text-align:left; }
+  table.mfhub-table td{ padding: 7px 12px; text-align:right; border-bottom: 1px solid #EFEFEE; color: var(--ink); white-space: nowrap; }
+  table.mfhub-table td:first-child{ text-align:left; color: var(--ink); }
+  table.mfhub-table tr.subtotal td{ font-weight: 700; background: #FBF7EF; }
+  table.mfhub-table td.neg{ color: #B33636; }
+  table.mfhub-table .idx{ color: var(--ink-soft); font-weight: 400; margin-right: 6px; }
+  .mfhub-mock-foot{ padding: 10px 18px 4px; font-size: 11px; color: rgba(250,248,244,0.4); }
+</style>
+
+    <div class="mfhub-mock">
+      <div class="mfhub-mock-head">
+        <div class="mfhub-mock-brand"><span class="dot"></span> MF Hub · DRE Gerencial · Painel do Cliente</div>
+        <div class="mfhub-mock-badge">Cascata do Resultado — 2026</div>
+      </div>
+      <div class="mfhub-mock-tabs">
+        <span>Jan/26</span><span>Fev/26</span><span>Mar/26</span>
+      </div>
+      <div class="mfhub-mock-scroll">
+        <table class="mfhub-table">
+          <thead><tr><th>Linha</th><th>Jan/26 · R$</th><th>AV%</th><th>Fev/26 · R$</th><th>AV%</th><th>Mar/26 · R$</th><th>AV%</th></tr></thead>
+          <tbody>
+<tr class="subtotal"><td><span class="idx">01 —</span>Receita Bruta</td><td class="">1.180.000</td><td class="">108,7%</td><td class="">1.246.500</td><td class="">108,7%</td><td class="">1.298.000</td><td class="">108,7%</td></tr>
+<tr><td><span class="idx">02 —</span>Deduções da Receita</td><td class="neg">(94.400)</td><td class="neg">-8,7%</td><td class="neg">(99.720)</td><td class="neg">-8,7%</td><td class="neg">(103.840)</td><td class="neg">-8,7%</td></tr>
+<tr class="subtotal"><td><span class="idx">03 —</span>Receita Líquida</td><td class="">1.085.600</td><td class="">100,0%</td><td class="">1.146.780</td><td class="">100,0%</td><td class="">1.194.160</td><td class="">100,0%</td></tr>
+<tr><td><span class="idx">04 —</span>Custos Variáveis (CMV/CSP)</td><td class="neg">(368.000)</td><td class="neg">-33,9%</td><td class="neg">(386.000)</td><td class="neg">-33,7%</td><td class="neg">(402.000)</td><td class="neg">-33,7%</td></tr>
+<tr class="subtotal"><td><span class="idx">05 —</span>Lucro Bruto / Margem de Contribuição</td><td class="">717.600</td><td class="">66,1%</td><td class="">760.780</td><td class="">66,3%</td><td class="">792.160</td><td class="">66,3%</td></tr>
+<tr><td><span class="idx">06 —</span>Despesas com Pessoal</td><td class="neg">(210.000)</td><td class="neg">-19,3%</td><td class="neg">(215.000)</td><td class="neg">-18,7%</td><td class="neg">(218.000)</td><td class="neg">-18,3%</td></tr>
+<tr><td><span class="idx">07 —</span>Despesas Administrativas</td><td class="neg">(145.000)</td><td class="neg">-13,4%</td><td class="neg">(150.000)</td><td class="neg">-13,1%</td><td class="neg">(152.000)</td><td class="neg">-12,7%</td></tr>
+<tr><td><span class="idx">08 —</span>Despesas Comerciais e Marketing</td><td class="neg">(62.000)</td><td class="neg">-5,7%</td><td class="neg">(70.000)</td><td class="neg">-6,1%</td><td class="neg">(75.000)</td><td class="neg">-6,3%</td></tr>
+<tr><td><span class="idx">09 —</span>Despesas Operacionais Gerais</td><td class="neg">(58.000)</td><td class="neg">-5,3%</td><td class="neg">(60.000)</td><td class="neg">-5,2%</td><td class="neg">(61.000)</td><td class="neg">-5,1%</td></tr>
+<tr class="subtotal"><td><span class="idx">10 —</span>Total Despesas Operacionais</td><td class="neg">(475.000)</td><td class="neg">-43,8%</td><td class="neg">(495.000)</td><td class="neg">-43,2%</td><td class="neg">(506.000)</td><td class="neg">-42,4%</td></tr>
+<tr class="subtotal"><td><span class="idx">11 —</span>EBITDA</td><td class="">242.600</td><td class="">22,3%</td><td class="">265.780</td><td class="">23,2%</td><td class="">286.160</td><td class="">24,0%</td></tr>
+<tr><td><span class="idx">12 —</span>Depreciação e Amortização</td><td class="neg">(18.000)</td><td class="neg">-1,7%</td><td class="neg">(18.000)</td><td class="neg">-1,6%</td><td class="neg">(18.000)</td><td class="neg">-1,5%</td></tr>
+<tr class="subtotal"><td><span class="idx">13 —</span>EBIT / Lucro Operacional</td><td class="">224.600</td><td class="">20,7%</td><td class="">247.780</td><td class="">21,6%</td><td class="">268.160</td><td class="">22,5%</td></tr>
+<tr><td><span class="idx">14 —</span>Despesas Financeiras</td><td class="neg">(21.500)</td><td class="neg">-2,0%</td><td class="neg">(19.800)</td><td class="neg">-1,7%</td><td class="neg">(18.200)</td><td class="neg">-1,5%</td></tr>
+<tr><td><span class="idx">15 —</span>Receitas Financeiras</td><td class="">3.200</td><td class="">0,3%</td><td class="">2.900</td><td class="">0,3%</td><td class="">2.600</td><td class="">0,2%</td></tr>
+<tr class="subtotal"><td><span class="idx">16 —</span>Resultado Financeiro Líquido</td><td class="neg">(18.300)</td><td class="neg">-1,7%</td><td class="neg">(16.900)</td><td class="neg">-1,5%</td><td class="neg">(15.600)</td><td class="neg">-1,3%</td></tr>
+<tr class="subtotal"><td><span class="idx">17 —</span>LAIR — Lucro Antes do IR/CSLL</td><td class="">206.300</td><td class="">19,0%</td><td class="">230.880</td><td class="">20,1%</td><td class="">252.560</td><td class="">21,1%</td></tr>
+<tr><td><span class="idx">18 —</span>Imposto de Renda e Contribuição Social</td><td class="neg">(41.260)</td><td class="neg">-3,8%</td><td class="neg">(46.176)</td><td class="neg">-4,0%</td><td class="neg">(50.512)</td><td class="neg">-4,2%</td></tr>
+<tr class="subtotal"><td><span class="idx">19 —</span>Lucro Líquido do Exercício</td><td class="">165.040</td><td class="">15,2%</td><td class="">184.704</td><td class="">16,1%</td><td class="">202.048</td><td class="">16,9%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mfhub-mock-foot">Ilustração do painel MF Hub com dados fictícios, apenas para demonstração.</div>
+    </div>
+
 
     <div class="article-cta">
       <h3>Quer ver como ficaria a DRE gerencial da sua empresa?</h3>
