@@ -264,6 +264,22 @@
   @media (max-width: 900px){ .blog-listing .list-grid{ grid-template-columns: 1fr; } }
 </style>
 
+
+<style>
+  .blog-card-v2{
+    background: var(--navy); border-radius: 6px; overflow: hidden;
+    display:flex; flex-direction:column; transition: transform .2s ease;
+  }
+  .blog-card-v2:hover{ transform: translateY(-3px); }
+  .blog-card-v2 .cover{ width:100%; aspect-ratio: 16/9; display:block; }
+  .blog-card-v2 .body{ padding: 20px 22px 26px; }
+  .blog-card-v2 .meta{ font-size: 12px; color: var(--gold-light); font-weight: 600; margin-bottom: 10px; }
+  .blog-card-v2 h3{ font-family: Cambria, serif; font-size: 18px; font-weight: 400; color: var(--cream); line-height: 1.35; margin-bottom: 10px; }
+  .blog-card-v2 p{ font-size: 13.5px; color: rgba(250,248,244,0.65); line-height: 1.55; }
+  .blog-cards-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .blog-listing .blog-cards-grid{ grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 900px){ .blog-cards-grid{ grid-template-columns: 1fr; } .blog-listing .blog-cards-grid{ grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
 
@@ -297,26 +313,38 @@
     </a>
 
     <!-- ARTIGOS PUBLICADOS: adicione um novo .blog-card aqui para cada artigo -->
-    <div class="list-grid">
-      <a class="blog-card" href="gestao-financeira-terceirizada-bpo.html">
-        <div class="meta">Marques Finance · Dezembro 2025</div>
-        <h3>Gestão financeira terceirizada: o que é e como funciona o BPO Financeiro</h3>
-        <p>O que pode e o que não pode ser terceirizado, e os mitos mais comuns sobre entregar essa rotina a um parceiro.</p>
+<div class="blog-cards-grid">
+      <a class="blog-card-v2" href="dados-planilha-risco-negocio.html">
+        <img class="cover" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDAwIDIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+CiAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiMxQjFCMUUiLz4KICA8cmVjdCB4PSI1NSIgeT0iNDAiIHdpZHRoPSI0NCIgaGVpZ2h0PSIzMCIgcng9IjIiIGZpbGw9IiNFM0EyM0IiIG9wYWNpdHk9IjAuMjUiLz4KPHJlY3QgeD0iMTA3IiB5PSI0MCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIxNTkiIHk9IjQwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjIxMSIgeT0iNDAiIHdpZHRoPSI0NCIgaGVpZ2h0PSIzMCIgcng9IjIiIGZpbGw9IiNFM0EyM0IiIG9wYWNpdHk9IjAuMjUiLz4KPHJlY3QgeD0iMjYzIiB5PSI0MCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIzMTUiIHk9IjQwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjU1IiB5PSI4MCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIxMDciIHk9IjgwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjE1OSIgeT0iODAiIHdpZHRoPSI0NCIgaGVpZ2h0PSIzMCIgcng9IjIiIGZpbGw9IiNFM0EyM0IiIG9wYWNpdHk9IjAuMjUiLz4KPHJlY3QgeD0iMjExIiB5PSI4MCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0YwQzA3NyIgb3BhY2l0eT0iMC44NSIvPgo8cmVjdCB4PSIyNjMiIHk9IjgwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjMxNSIgeT0iODAiIHdpZHRoPSI0NCIgaGVpZ2h0PSIzMCIgcng9IjIiIGZpbGw9IiNFM0EyM0IiIG9wYWNpdHk9IjAuMjUiLz4KPHJlY3QgeD0iNTUiIHk9IjEyMCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIxMDciIHk9IjEyMCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIxNTkiIHk9IjEyMCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIyMTEiIHk9IjEyMCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIyNjMiIHk9IjEyMCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIzMTUiIHk9IjEyMCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSI1NSIgeT0iMTYwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjEwNyIgeT0iMTYwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjE1OSIgeT0iMTYwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjIxMSIgeT0iMTYwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjI2MyIgeT0iMTYwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjMxNSIgeT0iMTYwIiB3aWR0aD0iNDQiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjI1Ii8+Cgo8L3N2Zz4=" alt="">
+        <div class="body">
+          <div class="meta">Marques Finance · Julho 2026</div>
+          <h3>Dados financeiros em planilha: o risco silencioso que a maioria das empresas ainda carrega</h3>
+          <p>Os riscos reais de depender de Excel para controle financeiro, e como sair disso sem virar um projeto de TI.</p>
+        </div>
       </a>
-      <a class="blog-card" href="dre-gerencial.html">
-        <div class="meta">Marques Finance · Janeiro 2026</div>
-        <h3>Como elaborar uma DRE gerencial: o guia prático para quem quer sair da planilha</h3>
-        <p>Conceitos, diferença para a DRE contábil e o passo a passo de como construir e coletar os dados.</p>
+      <a class="blog-card-v2" href="dificuldade-entender-numeros-empresa.html">
+        <img class="cover" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDAwIDIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+CiAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiMxQjFCMUUiLz4KICAKICA8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxMTAiIHI9IjQiIGZpbGw9IiNFM0EyM0IiIG9wYWNpdHk9IjAuNSIvPgogIDxjaXJjbGUgY3g9IjIxMCIgY3k9IjcwIiByPSI1IiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjciLz4KICA8Y2lyY2xlIGN4PSI5MCIgY3k9IjE1MCIgcj0iMyIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC40Ii8+CiAgPGNpcmNsZSBjeD0iMjYwIiBjeT0iMTMwIiByPSI2IiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjYiLz4KICA8Y2lyY2xlIGN4PSIzMjAiIGN5PSI5MCIgcj0iNCIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC41Ii8+CiAgPGNpcmNsZSBjeD0iMTgwIiBjeT0iMTcwIiByPSIzIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjM1Ii8+CiAgPGxpbmUgeDE9IjkwIiB5MT0iMTUwIiB4Mj0iMTUwIiB5Mj0iMTEwIiBzdHJva2U9IiNFM0EyM0IiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC4zIi8+CiAgPGxpbmUgeDE9IjE1MCIgeTE9IjExMCIgeDI9IjIxMCIgeTI9IjcwIiBzdHJva2U9IiNFM0EyM0IiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC4zIi8+CiAgPGxpbmUgeDE9IjIxMCIgeTE9IjcwIiB4Mj0iMjYwIiB5Mj0iMTMwIiBzdHJva2U9IiNFM0EyM0IiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC4zIi8+CiAgPGNpcmNsZSBjeD0iMjYwIiBjeT0iMTMwIiByPSIzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjBDMDc3IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDxsaW5lIHgxPSIyODQiIHkxPSIxNTQiIHgyPSIzMDUiIHkyPSIxNzUiIHN0cm9rZT0iI0YwQzA3NyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KCjwvc3ZnPg==" alt="">
+        <div class="body">
+          <div class="meta">Marques Finance · Abril 2026</div>
+          <h3>Por que é tão difícil entender os números da própria empresa</h3>
+          <p>O sintoma, a causa e o caminho de saída para quem recebe relatório mas não consegue decidir com ele.</p>
+        </div>
       </a>
-      <a class="blog-card" href="dificuldade-entender-numeros-empresa.html">
-        <div class="meta">Marques Finance · Abril 2026</div>
-        <h3>Por que é tão difícil entender os números da própria empresa</h3>
-        <p>O sintoma, a causa e o caminho de saída para quem recebe relatório mas não consegue decidir com ele.</p>
+      <a class="blog-card-v2" href="dre-gerencial.html">
+        <img class="cover" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDAwIDIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+CiAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiMxQjFCMUUiLz4KICAKICA8Y2lyY2xlIGN4PSI3MCIgY3k9IjE4MCIgcj0iMTIwIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPHJlY3QgeD0iODAiIHk9IjE0MCIgd2lkdGg9IjI2IiBoZWlnaHQ9IjUwIiBmaWxsPSIjRTNBMjNCIiBvcGFjaXR5PSIwLjU1Ii8+CiAgPHJlY3QgeD0iMTIwIiB5PSIxMTUiIHdpZHRoPSIyNiIgaGVpZ2h0PSI3NSIgZmlsbD0iI0UzQTIzQiIgb3BhY2l0eT0iMC43NSIvPgogIDxyZWN0IHg9IjE2MCIgeT0iODUiIHdpZHRoPSIyNiIgaGVpZ2h0PSIxMDUiIGZpbGw9IiNFM0EyM0IiLz4KICA8cmVjdCB4PSIyMDAiIHk9IjYwIiB3aWR0aD0iMjYiIGhlaWdodD0iMTMwIiBmaWxsPSIjRjBDMDc3Ii8+CiAgPHBhdGggZD0iTTI0MCAxMzAgTDMwMCA3MCIgc3Ryb2tlPSIjRjBDMDc3IiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KICA8cGF0aCBkPSJNMjgwIDcwIEwzMDAgNzAgTDMwMCA5MCIgc3Ryb2tlPSIjRjBDMDc3IiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KCjwvc3ZnPg==" alt="">
+        <div class="body">
+          <div class="meta">Marques Finance · Janeiro 2026</div>
+          <h3>Como elaborar uma DRE gerencial: o guia prático para quem quer sair da planilha</h3>
+          <p>Conceitos, diferença para a DRE contábil e o passo a passo de como construir e coletar os dados.</p>
+        </div>
       </a>
-      <a class="blog-card" href="dados-planilha-risco-negocio.html">
-        <div class="meta">Marques Finance · Julho 2026</div>
-        <h3>Dados financeiros em planilha: o risco silencioso que a maioria das empresas ainda carrega</h3>
-        <p>Os riscos reais de depender de Excel para controle financeiro, e como sair disso sem virar um projeto de TI.</p>
+      <a class="blog-card-v2" href="gestao-financeira-terceirizada-bpo.html">
+        <img class="cover" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDAwIDIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+CiAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiMxQjFCMUUiLz4KICAKICA8Y2lyY2xlIGN4PSIzMzAiIGN5PSI0MCIgcj0iOTAiIGZpbGw9IiNFM0EyM0IiIG9wYWNpdHk9IjAuMDgiLz4KICA8cmVjdCB4PSI2MCIgeT0iNzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iODAiIHJ4PSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiNFM0EyM0IiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC41NSIvPgogIDxyZWN0IHg9IjkwIiB5PSI5NSIgd2lkdGg9IjExMCIgaGVpZ2h0PSI4MCIgcng9IjYiIGZpbGw9IiNFM0EyM0IiIG9wYWNpdHk9IjAuOSIvPgogIDxwYXRoIGQ9Ik0yMTUgMTMwIEwyNTUgMTMwIiBzdHJva2U9IiNGMEMwNzciIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogIDxyZWN0IHg9IjI3MCIgeT0iOTUiIHdpZHRoPSI5MCIgaGVpZ2h0PSI4MCIgcng9IjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YwQzA3NyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhcnJvdyIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjEwIiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPgogICAgICA8cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjRjBDMDc3Ii8+CiAgICA8L21hcmtlcj4KICA8L2RlZnM+Cgo8L3N2Zz4=" alt="">
+        <div class="body">
+          <div class="meta">Marques Finance · Dezembro 2025</div>
+          <h3>Gestão financeira terceirizada: o que é e como funciona o BPO Financeiro</h3>
+          <p>O que pode e o que não pode ser terceirizado, e os mitos mais comuns sobre entregar essa rotina a um parceiro.</p>
+        </div>
       </a>
     </div>
 
