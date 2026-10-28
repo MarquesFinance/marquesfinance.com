@@ -475,5 +475,18 @@
   </div>
 </footer>
 
+<script>
+  /* Conversão Google Ads: clique nos botões de cadastro da conta gratuita */
+  (function(){
+    function track(e){
+      var a = e.target && e.target.closest ? e.target.closest('a[href*="app.marquesfinance.com.br/#cadastro"]') : null;
+      if (a && typeof gtag === 'function') {
+        gtag('event', 'conversion', {'send_to': 'AW-18451102479/cOLRCLXRoK0dEI_2ld5E'});
+      }
+    }
+    document.addEventListener('click', track);
+    document.addEventListener('auxclick', track);
+  })();
+</script>
 </body>
 </html>
